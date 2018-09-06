@@ -60,9 +60,16 @@ public class ArticleManageController {
     @ResponseBody
     public String articleCreateConfirm(@RequestBody JSONObject jsonObject){
         BlogArticle blogArticle = JSON.parseObject(jsonObject.toJSONString(),BlogArticle.class);
-        timelineManageService.addTimelineInfo(blogArticle,"添加博客","Success");
-        articleManageService.addArticleInfo(blogArticle);
-        return "success";
+        try{
+            articleManageService.addArticleInfo(blogArticle);
+        }catch (Exception e){
+            timelineManageService.addTimelineInfo(blogArticle.getArticleTitle(),
+                    blogArticle.getArticleManager(),"添加博客","Fail");
+            return "Add Fail";
+        }
+        timelineManageService.addTimelineInfo(blogArticle.getArticleTitle(),
+                blogArticle.getArticleManager(),"添加博客","Success");
+        return "Add Success";
     }
 
 
@@ -82,9 +89,17 @@ public class ArticleManageController {
     @ResponseBody
     public String articleUpdateConfirm(@RequestBody JSONObject jsonObject){
         BlogArticle blogArticleNew = JSON.parseObject(jsonObject.toJSONString(),BlogArticle.class);
-        timelineManageService.addTimelineInfo(blogArticleNew,"更新博客","Success");
-        articleManageService.renewalArticleById(blogArticleNew);
-        return "success";
+        try{
+            articleManageService.renewalArticleById(blogArticleNew);
+        }catch (Exception e){
+            timelineManageService.addTimelineInfo(blogArticleNew.getArticleTitle(),
+                    blogArticleNew.getArticleManager(),"更新博客","Fail");
+            return "Update Fail";
+        }
+        timelineManageService.addTimelineInfo(blogArticleNew.getArticleTitle(),
+                blogArticleNew.getArticleManager(),"更新博客","Success");
+        return "Update Success";
+
     }
 
     //博文删除
@@ -94,12 +109,15 @@ public class ArticleManageController {
         int articleId = Integer.parseInt(request.getParameter("articleId"));
         BlogArticle blogArticle = articleManageService.getArticleById(articleId);
         try{
-            timelineManageService.addTimelineInfo(blogArticle,"删除博客","Success");
             articleManageService.removeArticleById(articleId);
         }catch (Exception e){
-            return "delete abnormal";
+            timelineManageService.addTimelineInfo(blogArticle.getArticleTitle(),
+                    blogArticle.getArticleManager(),"删除博客","Fail");
+            return "Delete Fail";
         }
-        return "delete success";
+        timelineManageService.addTimelineInfo(blogArticle.getArticleTitle(),
+                blogArticle.getArticleManager(),"删除博客","Success");
+        return "Delete Success";
     }
 
 }

@@ -69,12 +69,9 @@
                             <label>Branch</label>
                             <input id="articleBelongBranch" type="text" />
                         </p>
-                        <p>
-                            <label>Author</label>
-                            <input id="articleAuthor" type="text" />
-                        </p>
                         </div>
-                        <a style="float: right;color:#2ab39a;margin-right: 10%" onclick="articleCreateConfirm('${blogUser.userId}','${blogUser.loginName}')" >保存</a>
+                        <a style="float: right;color:#2ab39a;margin-right: 10%"
+                           onclick="articleCreateConfirm('${blogUser.userId}','${blogUser.loginName}','${blogUser.userName}')" >保存</a>
                         <a style="float: right;color:#ac2925;margin-right: -15%;" onclick="jumpToArticleManage('${blogUser.userId}')">返回</a>
                 </form>
 

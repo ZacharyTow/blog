@@ -1,11 +1,22 @@
 
 //添加确认
-function articleCreateConfirm(userId,manager){
+function articleCreateConfirm(userId,manager,author){
     var articleTitle = $("#articleTitle").val();
     var articleContent = $("#articleContent").val();
     var articleBelongBranch = $("#articleBelongBranch").val();
-    var articleAuthor = $("#articleAuthor").val();
+    var articleAuthor = author;
     var articleManager = manager;
+    if(articleTitle == ''){
+        alert("articleTitle can't null");
+        return false;
+    }else if(articleContent == ''){
+        alert("articleContent can't null");
+        return false;
+    }else if(articleBelongBranch == ''){
+        alert("articleBelongBranch can't null");
+        return false;
+    }
+
     var jasonObj = {"articleTitle":articleTitle,"articleContent":articleContent,
             "articleBelongBranch":articleBelongBranch, "articleAuthor":articleAuthor,"articleManager":articleManager};
     $.ajax( {
@@ -37,13 +48,14 @@ function articleCreateConfirm(userId,manager){
     });
 }
 //更新确认
-function articleUpdateConfirm(userId,articleId){
+function articleUpdateConfirm(userId,articleId,belong){
     var articleId = articleId;
     var articleTitle = $("#articleTitle").val();
     var articleContent = $("#articleContent").val();
     var articleBelongBranch = $("#articleBelongBranch").val();
-    var jasonObj = {"articleId":articleId,"articleTitle":articleTitle,
-        "articleContent":articleContent,"articleBelongBranch":articleBelongBranch};
+    var articleManager = belong;
+    var jasonObj = {"articleId":articleId,"articleTitle":articleTitle, "articleContent":articleContent,
+        "articleBelongBranch":articleBelongBranch,"articleManager":articleManager};
     $.ajax( {
         type : "post",
         url : "articleUpdateConfirm",

@@ -87,10 +87,13 @@ function registerAccountInfo(window){
         dataType:"text",
         contentType: "application/json",
         success : function(msg) {
-            if(msg){
-                alert(msg);
+            alert(msg);
+            if(msg == "Register Success"){
+                hideDiv(window);
+            }else {
+                return false;
             }
-            hideDiv(window);
+
         }
     });
 }

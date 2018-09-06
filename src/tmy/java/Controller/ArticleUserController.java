@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import tmy.java.Bean.BlogUser;
-import tmy.java.Service.ArticleManageService;
 import tmy.java.Service.ArticleUserService;
+import tmy.java.Service.TimelineManageService;
 
 /**
  * Created by Zt on 2018.8.7
@@ -26,8 +26,8 @@ public class ArticleUserController {
     private ArticleUserService articleUserService;
 
     @Autowired
-    @Qualifier("articleManageService")
-    private ArticleManageService articleManageService;
+    @Qualifier("timelineManageService")
+    private TimelineManageService timelineManageService;
 
     //主页设置
     @RequestMapping(value = {"/","/home","/home/index"})
@@ -57,8 +57,17 @@ public class ArticleUserController {
     @ResponseBody
     public String accountUpdate(@RequestBody JSONObject jsonObject){
         BlogUser blogUser = JSON.parseObject(jsonObject.toJSONString(),BlogUser.class);
-        articleUserService.setUserById(blogUser);
-        return "update success";
+        try{
+            articleUserService.setUserById(blogUser);
+        }catch (Exception e){
+            timelineManageService.addTimelineInfo(blogUser.getLoginName(),
+                    blogUser.getLoginName(),"更新用户信息","Fail");
+            return "Update Fail";
+        }
+        timelineManageService.addTimelineInfo(blogUser.getLoginName(),
+                blogUser.getLoginName(),"更新用户信息","Success");
+        return "Update Success";
+
     }
 
 
@@ -67,9 +76,21 @@ public class ArticleUserController {
     @ResponseBody
     public String accountRegister(@RequestBody JSONObject jsonObject){
         BlogUser blogUser = JSON.parseObject(jsonObject.toJSONString(),BlogUser.class);
-        if(articleUserService.addUserInfo(blogUser) == false)
-            return "repeat loginName";
-        return "register success";
+        boolean flag = false;
+        try{
+            flag = articleUserService.addUserInfo(blogUser);
+        }catch (Exception e){
+            timelineManageService.addTimelineInfo(blogUser.getLoginName(),
+                    blogUser.getLoginName(),"创建用户","Fail");
+            return "Register Fail";
+        }
+        if(flag){
+            timelineManageService.addTimelineInfo(blogUser.getLoginName(),
+                    blogUser.getLoginName(),"创建用户","Success");
+            return "Register Success";
+        }
+        else
+            return "Register Repeat";
     }
 
     //验证用户信息
@@ -85,14 +106,14 @@ public class ArticleUserController {
         }else if(!(blogUserCheck.getUserPhone().equals(blogUser.getUserPhone()))){
             return "Phone Wrong:please check phone";
         }
-        return "success";
+        return "Confirm Success";
     }
      //修改密码
      @RequestMapping(value = "/passwordUpdate",method = RequestMethod.POST)
      @ResponseBody
      public String passwordUpdate(String loginName,String password) {
         articleUserService.setPasswordByLoginName(loginName,password);
-        return "success";
+        return "Update Password Success";
      }
 
 }

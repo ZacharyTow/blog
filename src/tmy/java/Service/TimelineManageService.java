@@ -14,6 +14,6 @@ public interface TimelineManageService {
     List<BlogTimeline> getAllByBelong(String loginName);
 
     //记录操作博客时间轴
-    int addTimelineInfo(BlogArticle blogArticle, String option,String flag);
+    int addTimelineInfo(String message,String belong, String option,String flag);
 
 }

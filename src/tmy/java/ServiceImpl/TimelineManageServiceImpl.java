@@ -32,17 +32,17 @@ public class TimelineManageServiceImpl implements TimelineManageService {
     }
 
     @Override
-    public int addTimelineInfo(BlogArticle blogArticle, String option,String flag){
-        BlogTimeline blogTimeline = combineParam(blogArticle,option,flag);
+    public int addTimelineInfo(String message,String belong, String option,String flag){
+        BlogTimeline blogTimeline = combineParam(message,belong,option,flag);
         blogTimeline.setTimelineId(timelineManageDao.findPresentTimelineId()+1);
         return timelineManageDao.insertTimelineInfo(blogTimeline);
     }
     //时间轴参数组装
-    private BlogTimeline combineParam(BlogArticle blogArticle, String option,String flag) {
+    private BlogTimeline combineParam(String message,String belong,String option,String flag) {
         BlogTimeline blogTimeline = new BlogTimeline();
-        String timeLineTitle = option + "：" + blogArticle.getArticleTitle() + flag;
+        String timeLineTitle = option + "：" + message + "------->"+ flag;
         blogTimeline.setTimelineTitle(timeLineTitle);
-        blogTimeline.setTimelineBelong(blogArticle.getArticleManager());
+        blogTimeline.setTimelineBelong(belong);
         return blogTimeline;
     }
 
