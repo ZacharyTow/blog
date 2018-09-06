@@ -15,8 +15,10 @@ public interface ArticleUserService {
 
     BlogUser getUserByManager(String articleManager);
 
-    int renewalUserById(BlogUser blogUser);
+    int setUserById(BlogUser blogUser);
 
     boolean addUserInfo(BlogUser blogUser);
+
+    int setPasswordByLoginName(String loginName, String password);
 }
 

@@ -135,10 +135,15 @@ function jumpToAccountManage(userId){
     form.submit();
     form.remove();
 }
-//跳转到注册页面
+//注册页面弹窗
 function jumpToRegister(){
+    popupDiv('pop-div-register');
+}
+//验证页面弹窗
+function forgetPassword(){
     popupDiv('pop-div-confirm');
 }
+
 //弹窗显示
 function popupDiv(div_id) {
     var div_obj = $("#"+div_id);

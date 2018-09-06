@@ -45,9 +45,10 @@ public class ArticleUserServiceImpl implements ArticleUserService {
         return blogUser;
     }
     @Override
-    public int renewalUserById(BlogUser blogUser){
+    public int setUserById(BlogUser blogUser){
         return articleUserDao.updateUserById(blogUser);
     }
+
     @Override
     public boolean addUserInfo(BlogUser blogUser){
         Boolean flag = true;
@@ -57,6 +58,12 @@ public class ArticleUserServiceImpl implements ArticleUserService {
         else
             flag = false;
         return flag;
+    }
+
+    @Override
+    public int setPasswordByLoginName(String loginName, String password){
+        return articleUserDao.updatePasswordByLoginName(loginName,password);
+
     }
 
 

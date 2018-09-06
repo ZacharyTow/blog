@@ -33,4 +33,7 @@ public interface ArticleUserDao {
     @Insert("insert into BlogUser(user_id,login_name,login_password,user_name,user_phone)" +
             " values(#{userId},#{loginName},#{loginPassword},#{userName},#{userPhone}) ")
     int insertUserInfo(BlogUser blogUser);
+
+    @Update("update BlogUser set login_password = #{password} where login_name = #{loginName}")
+    int updatePasswordByLoginName(@Param("loginName") String loginName,@Param("password")String password);
 }

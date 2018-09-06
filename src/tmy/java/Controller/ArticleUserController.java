@@ -57,7 +57,7 @@ public class ArticleUserController {
     @ResponseBody
     public String accountUpdate(@RequestBody JSONObject jsonObject){
         BlogUser blogUser = JSON.parseObject(jsonObject.toJSONString(),BlogUser.class);
-        articleUserService.renewalUserById(blogUser);
+        articleUserService.setUserById(blogUser);
         return "update success";
     }
 
@@ -67,10 +67,32 @@ public class ArticleUserController {
     @ResponseBody
     public String accountRegister(@RequestBody JSONObject jsonObject){
         BlogUser blogUser = JSON.parseObject(jsonObject.toJSONString(),BlogUser.class);
-
         if(articleUserService.addUserInfo(blogUser) == false)
             return "repeat loginName";
         return "register success";
     }
+
+    //验证用户信息
+    @RequestMapping(value = "/accountConfirm",method = RequestMethod.POST)
+    @ResponseBody
+    public String accountConfirm(@RequestBody JSONObject jsonObject) {
+        BlogUser blogUser = JSON.parseObject(jsonObject.toJSONString(), BlogUser.class);
+        BlogUser blogUserCheck = articleUserService.getUserByManager(blogUser.getLoginName());
+        if(blogUserCheck == null){
+            return "No Record:please check loginName";
+        }else if(!(blogUserCheck.getUserMail().equals(blogUser.getUserMail()))){
+            return "Mail Wrong:please check mail";
+        }else if(!(blogUserCheck.getUserPhone().equals(blogUser.getUserPhone()))){
+            return "Phone Wrong:please check phone";
+        }
+        return "success";
+    }
+     //修改密码
+     @RequestMapping(value = "/passwordUpdate",method = RequestMethod.POST)
+     @ResponseBody
+     public String passwordUpdate(String loginName,String password) {
+        articleUserService.setPasswordByLoginName(loginName,password);
+        return "success";
+     }
 
 }

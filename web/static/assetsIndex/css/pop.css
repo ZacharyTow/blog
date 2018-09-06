@@ -44,6 +44,7 @@
     border-radius: 10px;
     width: 400px;
     height:300px;
+    background: rgba(247, 247, 247, 0.76);
 }
 .register {
     z-index: 1001; /*这个数值要足够大，才能够显示在最上层*/

@@ -91,7 +91,7 @@
                             </div>
                             <button type="submit" class="btn">Sign in</button>
                             <div class="text-left" >
-                                <a href="#" class="pull-left" style="color: #2aabd2">忘记密码？</a>
+                                <a onclick="forgetPassword()" class="pull-left" style="color: #2aabd2">忘记密码？</a>
                                 <a onclick="jumpToRegister()" class="pull-right" style="color: #2aabd2">注册账号</a>
                             </div>
                             <div>
@@ -123,26 +123,60 @@
 </div>
 
 <%--注册弹窗--%>
-<div id="pop-div-confirm"  class="register">
+<div id="pop-div-register"  class="register">
     <div class="pop-charactor" >
         <form action="" method="post">
             <h2 style="color: white">Register Infomation</h2>
             <p for="registeredName">Login Name</p>
-            <input type="text" id="registeredName" placeholder="enter your login password..." />
+            <input type="text" id="registeredName" placeholder="enter your login name..." />
 
             <p for="registeredPassword">Login Password</p>
-            <input type="password" id="registeredPassword" autocomplete="new-password" placeholder="enter your registered password..."/>
+            <input type="password" id="registeredPassword" autocomplete="new-password" placeholder="enter your login password..."/>
 
-            <p for="userName">userName</p>
+            <p for="userName">User Name</p>
             <input type="text" id="userName"  placeholder="enter your user name..."/>
 
-            <p for="userPhone">userPhone</p>
+            <p for="userPhone">User Phone</p>
             <input type="txet" id="userPhone" style="margin-bottom: 30px" placeholder="enter your user phone..."/>
 
-            <a style="background: #199872;border:10px solid  #199872;" onclick="registerAccountInfo('pop-div-confirm')">Register</a>
+            <a style="background: #21e7af;border:10px solid  #21e7af;" onclick="registerAccountInfo('pop-div-register')">Register</a>
+            <a style="background: #d0e9c6;border:10px solid #d0e9c6;color: #010101;" onclick="hideDiv('pop-div-register')">Return</a>
+        </form>
+    </div>
+</div>
+<%--忘记密码弹窗--%>
+<div id="pop-div-confirm"  class="register">
+    <div class="pop-charactor" >
+        <form action="" method="post">
+            <h2 style="color: white">Check Your Infomation</h2>
+            <p for="name">Check your loginName</p>
+            <input type="text" id="name" placeholder="enter your login name..." />
+
+            <p for="mail">Check your mail</p>
+            <input type="text" id="mail"  placeholder="enter your mail..."/>
+
+            <p for="phone">Check your phoneNumber</p>
+            <input type="text" id="phone" style="margin-bottom: 30px" placeholder="enter your phone number..."/>
+
+            <a style="background: #B50000;border:10px solid  #B50000;color: #010101;" onclick="confirmAccountInfo('pop-div-confirm')">Confirm</a>
             <a style="background: #d0e9c6;border:10px solid #d0e9c6;color: #010101;" onclick="hideDiv('pop-div-confirm')">Return</a>
+        </form>
+    </div>
+</div>
+<%--设置新密码弹窗--%>
+<div id="pop-div-reset"  class="register">
+    <div class="pop-charactor" >
+        <form action="" method="post">
+            <h2 style="color: white">Replace Password</h2>
 
+            <p for="password">Reset password</p>
+            <input type="password" id="password" autocomplete="new-password" placeholder="enter new password..."/>
 
+            <p for="checkPassword">input password again</p>
+            <input type="password" id="checkPassword" autocomplete="new-password" style="margin-bottom: 30px" placeholder="check the new password..."/>
+
+            <a style="background: #21e7af;border:10px solid  #21e7af;" onclick="confirmPassword('pop-div-reset')">Save</a>
+            <a style="background: #d0e9c6;border:10px solid #d0e9c6;color: #010101;" onclick="hideDiv('pop-div-reset')">Return</a>
         </form>
     </div>
 </div>

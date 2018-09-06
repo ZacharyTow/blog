@@ -20,6 +20,4 @@ public interface ArticleManageService {
     int renewalArticleById(BlogArticle blogArticle);
     //删除博文
     int removeArticleById(int articleId);
-
-
 }
