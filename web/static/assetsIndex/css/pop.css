@@ -1,0 +1,55 @@
+.pop-box {
+    z-index: 9999; /*这个数值要足够大，才能够显示在最上层*/
+    margin-bottom: 3px;
+    display: none;
+    position: relative;
+    background: rgba(255, 255, 255, 0);
+    border:solid 1px #6e8bde;
+}
+
+.pop-box h4 {
+    color: #FFF;
+    cursor:default;
+    height: 18px;
+    font-size: 14px;
+    font-weight:bold;
+    text-align: left;
+    padding-left: 8px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+
+}
+
+.pop-box-body {
+    clear: both;
+    margin: 4px;
+    padding: 2px;
+}
+
+
+.mask {
+    color:#FFFFFF;
+    background-color:#FFFFFF;
+    position:absolute;
+    top:0px;
+    left:0px;
+    /*filter: Alpha(Opacity=1);*/
+    opacity: 0.5;
+    text-align: center;
+}
+
+.delete{
+    font-family: Arial;
+    border: 1px solid lavender;
+    border-radius: 10px;
+    width: 400px;
+    height:300px;
+}
+.register {
+    z-index: 1001; /*这个数值要足够大，才能够显示在最上层*/
+    margin-bottom: 0;
+    display: none;
+    position: relative;
+    background: rgba(255, 255, 255, 0);
+}
+

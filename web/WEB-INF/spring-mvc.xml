@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!-- 默认使用基于注释的适配器和映射器 -->
+    <mvc:annotation-driven />
+
+    <!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理 -->
+    <mvc:default-servlet-handler />
+
+    <!--处理静态资源-->
+    <mvc:resources location="/static/" mapping="/img/**"/>
+    <mvc:resources location="/static/" mapping="/js/**"/>
+    <mvc:resources location="/static/" mapping="/css/**"/>
+
+
+    <!-- 自动扫描包中的Controlller -->
+    <context:component-scan base-package="tmy.java.Controller"/>
+
+    <util:properties id="propertiesReader" location="classpath:tmy/resource/jdbc.properties"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/view/"/><!-- 前缀 -->
+        <property name="suffix" value=".jsp"/><!-- 后缀，自动拼接 -->
+    </bean>
+
+</beans>
