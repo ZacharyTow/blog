@@ -33,9 +33,6 @@ public class CommonManageController {
     @Qualifier("messageManageService")
     private MessageManageService messageManageService;
 
-    @Autowired
-    @Qualifier("cookieManageService")
-    private CookieManageService cookieManageService;
 
     //博客首页
     @RequestMapping("/articleIndex")
