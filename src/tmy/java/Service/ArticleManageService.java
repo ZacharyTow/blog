@@ -14,7 +14,11 @@ public interface ArticleManageService {
     List<BlogArticle> getAllArticle(String loginName);
     //获取推荐博文
     List<BlogArticle> getAllArticleRecommend(String loginName);
-
+    //获取点击量排行博文
+    BlogArticle getArticleReadesMax(String loginName);
+    List<BlogArticle> getAllArticleReaded(String loginName);
+    //获取所有用户的推荐博文
+    List<BlogArticle> getAllArticleSpecial();
     //根据id查找博文
     BlogArticle getArticleById(int articleId);
     //添加博文
@@ -23,5 +27,4 @@ public interface ArticleManageService {
     int renewalArticleById(BlogArticle blogArticle);
     //删除博文
     int removeArticleById(int articleId);
-
 }

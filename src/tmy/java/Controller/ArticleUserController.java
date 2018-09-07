@@ -6,12 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import tmy.java.Bean.BlogUser;
 import tmy.java.Service.ArticleUserService;
+import tmy.java.Service.CookieManageService;
 import tmy.java.Service.TimelineManageService;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Zt on 2018.8.7
@@ -29,6 +35,10 @@ public class ArticleUserController {
     @Qualifier("timelineManageService")
     private TimelineManageService timelineManageService;
 
+    @Autowired
+    @Qualifier("cookieManageService")
+    private CookieManageService cookieManageService;
+
     //主页设置
     @RequestMapping(value = {"/","/home","/home/index"})
     public ModelAndView loginIndex() {
@@ -38,11 +48,13 @@ public class ArticleUserController {
 
     //拦截login请求，处理登陆用户信息，并返回相应展示信息
     @RequestMapping("/login")
-    public String login(String loginName, String loginPassword, RedirectAttributes attr, Model model) {
+    public String login(HttpServletResponse response,String loginName, String loginPassword, RedirectAttributes attr, Model model) {
         BlogUser blogUser = articleUserService.checkLogin(loginName, loginPassword);
         String view = "";
         if (blogUser != null) {//登陆名与登陆密码无误
-            attr.addAttribute("userId",blogUser.getUserId());
+            attr.addFlashAttribute("userId",blogUser.getUserId());
+            //更新cookie
+            cookieManageService.setCookieByName(response,blogUser);
             view = "redirect:/articleIndex";
         } else {
             model.addAttribute("message", "登录名或者密码错误，请重新输入");
@@ -74,7 +86,7 @@ public class ArticleUserController {
     //注册用户
     @RequestMapping(value = "/accountRegister",method = RequestMethod.POST)
     @ResponseBody
-    public String accountRegister(@RequestBody JSONObject jsonObject){
+    public String accountRegister(@RequestBody JSONObject jsonObject,HttpServletResponse response ){
         BlogUser blogUser = JSON.parseObject(jsonObject.toJSONString(),BlogUser.class);
         boolean flag = false;
         try{
@@ -85,6 +97,8 @@ public class ArticleUserController {
             return "Register Fail";
         }
         if(flag){
+            //新建用户创建cookie
+            cookieManageService.setCookieByName(response,blogUser);
             timelineManageService.addTimelineInfo(blogUser.getLoginName(),
                     blogUser.getLoginName(),"创建用户","Success");
             return "Register Success";

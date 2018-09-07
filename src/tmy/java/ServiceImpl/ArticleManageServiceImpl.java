@@ -43,6 +43,27 @@ public class ArticleManageServiceImpl implements ArticleManageService {
 
     @Override
     @Transactional(readOnly = true)
+    public BlogArticle getArticleReadesMax(String loginName){
+        BlogArticle blogArticleReadedMax = articleManageDao.findArticleReadedMax(loginName);
+        return blogArticleReadedMax;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<BlogArticle> getAllArticleReaded(String loginName){
+        List<BlogArticle> blogArticleReadeds = articleManageDao.findArticleReadedByuUser(loginName);
+        return blogArticleReadeds;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<BlogArticle> getAllArticleSpecial(){
+        List<BlogArticle> blogArticleSpecials = articleManageDao.findArticleSpecial();
+        return blogArticleSpecials;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public BlogArticle getArticleById(int articleId) {
         return articleManageDao.selectArticleById(articleId);
     }

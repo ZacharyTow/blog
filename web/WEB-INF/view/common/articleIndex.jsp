@@ -117,63 +117,38 @@
                 <p class="abposition">${blogUser.userWork}</p>
                 <p class="abtext">${blogUser.userIntroduce}</p>
             </div>
-            <%--特别推荐等插件--%>
-            <div class="zhuanti">
-                <h2 class="hometitle">特别推荐</h2>
-                <ul>
-                    <li> <i><img src="<c:url value="/static/assetsIndex/images/banner03.jpg"/>"></i>
-                        <p>帝国cms调用方法 <span><a href="/">阅读</a></span> </p>
-                    </li>
-                    <li> <i><img src="<c:url value="/static/assetsIndex/images/b04.jpg"/>"></i>
-                        <p>5.20 我想对你说 <span><a href="/">阅读</a></span></p>
-                    </li>
-                    <li> <i><img src="<c:url value="/static/assetsIndex/images/b05.jpg"/>"></i>
-                        <p>个人博客，属于我的小世界！ <span><a href="/">阅读</a></span></p>
-                    </li>
-                </ul>
-            </div>
-            <div class="tuijian">
-                <h2 class="hometitle">推荐文章</h2>
-                <ul class="tjpic">
-                    <i><img src="<c:url value="/static/assetsIndex/images/toppic01.jpg"/>"></i>
-                    <p><a href="/">别让这些闹心的套路，毁了你的网页设计</a></p>
-                </ul>
-                <ul class="sidenews">
-                    <li> <i><img src="<c:url value="/static/assetsIndex/images/toppic01.jpg"/>"></i>
-                        <p><a href="/">别让这些闹心的套路，毁了你的网页设计</a></p>
-                        <span>2018-05-13</span> </li>
-                    <li> <i><img src="<c:url value="/static/assetsIndex/images/toppic02.jpg"/>"></i>
-                        <p><a href="/">给我模板PSD源文件，我给你设计HTML！</a></p>
-                        <span>2018-05-13</span> </li>
-                    <li> <i><img src="<c:url value="/static/assetsIndex/images/v1.jpg"/>"></i>
-                        <p><a href="/">别让这些闹心的套路，毁了你的网页设计</a></p>
-                        <span>2018-05-13</span> </li>
-                    <li> <i><img src="<c:url value="/static/assetsIndex/images/v2.jpg"/>"></i>
-                        <p><a href="/">给我模板PSD源文件，我给你设计HTML！</a></p>
-                        <span>2018-05-13</span> </li>
-                </ul>
-            </div>
+
             <div class="tuijian">
                 <h2 class="hometitle">点击排行</h2>
                 <ul class="tjpic">
-                    <i><img src="<c:url value="/static/assetsIndex/images/toppic01.jpg"/>"></i>
-                    <p><a href="/">别让这些闹心的套路，毁了你的网页设计</a></p>
+                    <i><a onclick="jumpToView('${blogArticleReadedMax.articleId}')"><img src="<c:url value="/static/assetsIndex/images/b06.jpg"/>"></a></i>
+                    <p>${blogArticleReadedMax.articleTitle}</p>
                 </ul>
+
                 <ul class="sidenews">
-                    <li> <i><img src="<c:url value="/static/assetsIndex/images/toppic01.jpg"/>"></i>
-                        <p><a href="/">别让这些闹心的套路</a></p>
-                        <span>2018-05-13</span> </li>
-                    <li> <i><img src="<c:url value="/static/assetsIndex/images/toppic02.jpg"/>"></i>
-                        <p><a href="/">给我模板PSD源文件，我给你设计HTML！</a></p>
-                        <span>2018-05-13</span> </li>
-                    <li> <i><img src="<c:url value="/static/assetsIndex/images/v1.jpg"/>"></i>
-                        <p><a href="/">别让这些闹心的套路，毁了你的网页设计</a></p>
-                        <span>2018-05-13</span> </li>
-                    <li> <i><img src="<c:url value="/static/assetsIndex/images/v2.jpg"/>"></i>
-                        <p><a href="/">给我模板PSD源文件，我给你设计HTML！</a></p>
-                        <span>2018-05-13</span> </li>
+                <% index = 1;%>
+                <c:forEach items="${blogArticleReadeds}" var="blogArticleReaded">
+                    <%String imageUrl="/static/assetsIndex/images/v"+ (index++) +".jpg"; %>
+                    <li> <i><img src="<c:url value="<%=imageUrl%>"/>"></i>
+                        <p><a onclick="jumpToView('${blogArticleReaded.articleId}')">${blogArticleReaded.articleTitle}</a></p>
+                        <span><fmt:formatDate value='${blogArticleReaded.articleDate}' type='date' pattern='yyyy-MM-dd'/></span> </li>
+                </c:forEach>
                 </ul>
             </div>
+            <%--特别推荐等插件--%>
+            <div class="zhuanti">
+                <h2 class="hometitle">特别推荐</h2>
+                <% index = 3;%>
+                <c:forEach items="${blogArticleSpecials}" var="blogArticleSpecial">
+                <%String imageUrl="/static/assetsIndex/images/b0"+ (index++) +".jpg"; %>
+                <ul>
+                    <li> <i><img src="<c:url value="<%=imageUrl%>" />"></i>
+                        <p>${blogArticleSpecial.articleTitle} <span><a onclick="jumpToView('${blogArticleSpecial.articleId}')">阅读</a></span> </p>
+                    </li>
+                </ul>
+                </c:forEach>
+            </div>
+
         </div>
     </article>
 
