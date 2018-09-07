@@ -5,6 +5,7 @@
 .fader { position: relative; width: 100%; padding-top: 60%; font-family: "futura", arial; overflow: hidden; }
 .fader .slide { position: absolute; width: 100%; top: 0; z-index: 1; opacity: 0; height: 100%; }
 .fader .slide img { width: 100%; height: 100%; }
+.fader .slide img:hover{cursor:pointer;}
 .fader .prev, .fader .next { position: absolute; height: 80px; line-height: 55px; width: 50px; font-size: 100px; text-align: center; color: #fff; top: 50%; left: 50px; z-index: 4; margin-top: -25px; cursor: pointer; opacity: 0; transition: all 150ms; }
 .fader .next { left: auto; right: 50px; }
 .fader .pager_list { position: absolute; width: 100%; height: 40px; padding: 0; line-height: 40px; bottom: 0; text-align: center; z-index: 4; }
@@ -104,7 +105,7 @@
 .sidenews li { margin: 0 0 20px 0; overflow: hidden }
 .sidenews li p { line-height: 24px; color: #888; font-size: 15px; overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2; }
 .sidenews li a { color: #48494d; }
-.sidenews li a:hover { color: #00A7EB; }
+.sidenews li a:hover { color: #00A7EB;cursor:pointer; }
 .sidenews i { width: 100px; height: 75px; overflow: hidden; display: block; border: #efefef 1px solid; float: left; margin-right: 10px }
 .sidenews img { height: 100%; max-height: 75px; margin: auto; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; transition: all 0.5s; }
 .sidenews li:hover i img { transform: scale(1.1) }
@@ -123,11 +124,11 @@
 .cloud ul a:nth-child(8n) { background: #83AF9B }
 .cloud ul a:first-child { background: #036564 }
 .cloud ul a:last-child { background: #3299BB }
-.cloud ul a:hover { border-radius: 0; text-shadow: #000 1px 1px 1px }
+.cloud ul a:hover { border-radius: 0; text-shadow: #000 1px 1px 1px ;cursor:pointer; }
 /*links*/
 .links ul { overflow: hidden }
 .links ul li { line-height: 24px; margin: 0 10px 10px 0; display: block; float: left }
-.links ul a:hover { text-decoration: underline; color: #000 }
+.links ul a:hover { text-decoration: underline; color: #000;cursor:pointer;  }
 /*guanzhu*/
 .guanzhu ul li { font-size: 12px; margin-bottom: 10px; background: #fff; color: #525252; line-height: 40px; padding: 0 0 0 34px; border: 1px solid #DDD; border-radius: 2px; position: relative; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
 .guanzhu .sina { border: #ec3d51 1px solid; background: url(../images/gzbg.jpg) no-repeat 0 10px }
@@ -449,7 +450,7 @@ h2.t_nav a:hover {cursor:pointer;}
 .news_title { font-size: 24px; font-weight: normal; padding: 30px 0 0 0; color: #333; }
 .news_author { width: 100%; color: #999; line-height: 18px; }
 .news_author span { margin-right: 10px; padding-left: 20px }
-.au01 { background: url(../images/author2.png) no-repeat left center }
+.au01 { background: url(../images/author.png) no-repeat left center }
 .au02 { background: url(../images/date.png) no-repeat left center }
 .au03 b { color: #333; padding: 0 5px }
 .au04 { font-weight: normal; }
@@ -465,7 +466,7 @@ h2.t_nav a:hover {cursor:pointer;}
 .infosbox .share { padding: 20px; }
 .nextinfo { line-height: 24px; width: 100%; background: #FFF; border-radius: 10px; overflow: hidden; margin: 20px 0 }
 .nextinfo p { padding: 4px 10px; border-radius: 5px; }
-.nextinfo a:hover { color: #000; text-decoration: underline }
+.nextinfo a:hover { color: #000; text-decoration: underline ;cursor:pointer; }
 .diggit { float:left; width: 140px; margin: auto; background: #E2523A url(../images/dzbg.jpg) no-repeat center left 10px; color: #fff; box-shadow: 1px 2px 6px 0px rgba(0,0,0,.2); border-radius: 3px; line-height: 40px; text-align: center; padding-left: 20px;margin-left: 20%; }
 .diggit a { color: #fff; }
 #diggnum { margin: 5px; }
@@ -473,7 +474,7 @@ h2.t_nav a:hover {cursor:pointer;}
 .otherlink h2 { border-bottom: #000 2px solid; line-height: 40px; font-size: 14px; background: url(../images/5794.png) left 10px center no-repeat; padding-left: 40px; color: #000 }
 .otherlink ul { margin: 10px 0 }
 .otherlink li { line-height: 24px; height: 24px; display: block; width: 290px; float: left; overflow: hidden; margin-right: 30px; padding-left: 10px; }
-.otherlink li a:hover { text-decoration: underline; color: #000 }
+.otherlink li a:hover { text-decoration: underline; color: #000 ;cursor:pointer; }
 .news_pl { margin: 10px 0; width: 100%; background: #FFF; border-radius: 10px; overflow: hidden; margin: 20px 0 }
 .news_pl h2 { background: url(../images/newsbg03.png) no-repeat left 10px center; border-bottom: #000 2px solid; line-height: 40px; font-size: 14px; padding-left: 30px; color: #000 }
 .xzsm ul, .ffsm ul { padding: 20px; line-height: 24px; border-top: 6px solid #a6b5c5; }
@@ -492,7 +493,7 @@ h2.t_nav a:hover {cursor:pointer;}
 .ab_box .news_infos { padding: 30px 0 }
 .meandblog { padding: 20px; border-radius: 10px; overflow: hidden; margin: 0 0 20px 0; }
 .meandblog li { background: #f1f1f1; line-height: 30px; margin: 5px 0; padding: 0 0 0 10px; border-radius: 10px; border-top: 2px solid #e2e2e2; text-shadow: #eae7e7 0px 0px 1px; }
-.meandblog li a:hover { color: #000 }
+.meandblog li a:hover { color: #000;cursor:pointer;  }
 /*money*/
 .dasbox{ width:130px; float:left; margin-left:40px;background: url(../images/dsbz.jpg) no-repeat left 20px center #E2523A ;
     

@@ -12,6 +12,9 @@ import java.util.List;
 public interface ArticleManageService {
     //获取所有博文
     List<BlogArticle> getAllArticle(String loginName);
+    //获取推荐博文
+    List<BlogArticle> getAllArticleRecommend(String loginName);
+
     //根据id查找博文
     BlogArticle getArticleById(int articleId);
     //添加博文
@@ -20,4 +23,5 @@ public interface ArticleManageService {
     int renewalArticleById(BlogArticle blogArticle);
     //删除博文
     int removeArticleById(int articleId);
+
 }

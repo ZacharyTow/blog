@@ -36,6 +36,13 @@ public class ArticleManageServiceImpl implements ArticleManageService {
 
     @Override
     @Transactional(readOnly = true)
+    public List<BlogArticle> getAllArticleRecommend(String loginName){
+        List<BlogArticle> blogArticleRecommend = articleManageDao.findArticleRecommendByuUser(loginName);
+        return blogArticleRecommend;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public BlogArticle getArticleById(int articleId) {
         return articleManageDao.selectArticleById(articleId);
     }

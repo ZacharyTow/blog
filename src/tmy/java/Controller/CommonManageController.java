@@ -36,12 +36,17 @@ public class CommonManageController {
     private MessageManageService messageManageService;
     //博客首页
     @RequestMapping("/articleIndex")
-    public ModelAndView index(@RequestParam int userId){
+    public ModelAndView Index(@RequestParam int userId){
         ModelAndView modelAndView = new ModelAndView("common/articleIndex");
         BlogUser blogUser = articleUserService.getUserById(userId);
+        //获取该用户所有博文
         List<BlogArticle> blogArticles = articleManageService.getAllArticle(blogUser.getLoginName());
+        //获取该用户推荐博文
+        List<BlogArticle> blogArticlesRecommends = articleManageService.getAllArticleRecommend(blogUser.getLoginName());
+
         modelAndView.addObject("blogUser", blogUser);
         modelAndView.addObject("blogArticles", blogArticles);
+        modelAndView.addObject("blogArticlesRecommends", blogArticlesRecommends);
         return modelAndView;
     }
     //博文管理

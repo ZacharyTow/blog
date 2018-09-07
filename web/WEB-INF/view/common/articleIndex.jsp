@@ -47,21 +47,28 @@
         <%--blogsbox begin--%>
         <div class="blogsbox">
             <%--推荐的博文--%>
+
             <div class="picsbox">
                 <div class="banner">
+                <%--<c:forEach items="${blogArticlesRecommends}" var="blogArticlesRecommend">--%>
                     <div id="banner" class="fader">
-                        <li class="slide" ><a href="/" target="_blank"><img src="<c:url value="/static/assetsIndex/images/banner01.jpg"/>"><span class="imginfo">别让这些闹心的套路，毁了你的网页设计!</span></a></li>
-                        <li class="slide" ><a href="/" target="_blank"><img src="<c:url value="/static/assetsIndex/images/banner02.jpg"/>"><span class="imginfo">网页中图片属性固定宽度，如何用js改变大小</span></a></li>
-                        <li class="slide" ><a href="/" target="_blank"><img src="<c:url value="/static/assetsIndex/images/banner03.jpg"/>"><span class="imginfo">个人博客，属于我的小世界！</span></a></li>
+                    <% int index = 1;%>
+                    <c:forEach items="${blogArticlesRecommends}" var="blogArticlesRecommend">
+                        <%String imageUrl="/static/assetsIndex/images/banner0"+ (index++) +".jpg"; %>
+                        <li class="slide" ><a onclick="jumpToView('${blogArticlesRecommend.articleId}')" target="_blank"><img src="<c:url value = "<%=imageUrl%>" />">
+                            <span class="imginfo">${blogArticlesRecommend.articleTitle}</span></a></li>
                         <div class="fader_controls">
                             <div class="page prev" data-target="prev">&lsaquo;</div>
                             <div class="page next" data-target="next">&rsaquo;</div>
                             <ul class="pager_list">
                             </ul>
                         </div>
+                    </c:forEach>
                     </div>
+
                 </div>
             </div>
+
             <%--空白格--%>
             <div class="blank"></div>
 

@@ -18,6 +18,10 @@ public interface ArticleManageDao {
     @Select("select * from BlogArticle where article_manager = #{loginName} order by article_id desc")
     List<BlogArticle> findArticleByuUser(String loginName) ;
 
+    @Select("select * from BlogArticle order by article_liked desc limit 3")
+    List<BlogArticle> findArticleRecommendByuUser(String loginName);
+
+
     @Select("select * from BlogArticle where article_id = #{articleId}")
     BlogArticle selectArticleById(int articleId);
 
@@ -34,4 +38,5 @@ public interface ArticleManageDao {
     @Update("update BlogArticle set article_title = #{articleTitle},article_content = #{articleContent},article_belong_branch = #{articleBelongBranch}" +
             " where article_id = #{articleId}")
     int updateArticleById(BlogArticle blogArticle);
+
 }
