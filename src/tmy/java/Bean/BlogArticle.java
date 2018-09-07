@@ -13,6 +13,8 @@ public class BlogArticle {
     private String articleAuthor;
     private String articleBelongBranch;
     private Date articleDate;
+    private int articleReaded;
+    private int articleLiked;
     private String articleManager;
 
 
@@ -70,5 +72,21 @@ public class BlogArticle {
 
     public void setArticleManager(String articleManager) {
         this.articleManager = articleManager;
+    }
+
+    public int getArticleReaded() {
+        return articleReaded;
+    }
+
+    public void setArticleReaded(int articleReaded) {
+        this.articleReaded = articleReaded;
+    }
+
+    public int getArticleLiked() {
+        return articleLiked;
+    }
+
+    public void setArticleLiked(int articleLiked) {
+        this.articleLiked = articleLiked;
     }
 }

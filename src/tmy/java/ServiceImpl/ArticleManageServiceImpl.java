@@ -49,6 +49,8 @@ public class ArticleManageServiceImpl implements ArticleManageService {
     @Override
     public int addArticleInfo(BlogArticle blogArticle){
         blogArticle.setArticleId(articleManageDao.findPresentArticleId()+1);
+        blogArticle.setArticleReaded(0);
+        blogArticle.setArticleLiked(0);
         return articleManageDao.insertArticleInfo(blogArticle);
     }
 

@@ -54,13 +54,32 @@
             <c:forEach items="${blogArticles}" var="blogArticle">
                 <div class="articles" data-scroll-reveal="enter bottom over 1s" >
                     <h3 class="articletitle"><p target="_blank">${blogArticle.articleTitle}</p></h3>
-                    <p class="articletext">&nbsp;&nbsp;&nbsp;&nbsp;${blogArticle.articleContent}</p>
+                    <p class="articletext">${blogArticle.articleContent}</p>
                     <div class="articleinfo">
                         <ul><li class="author">${blogArticle.articleAuthor}</li>
                             <li class="lmname" name="articleBelongBranch">${blogArticle.articleBelongBranch}</li>
                             <li class="timer"><fmt:formatDate value='${blogArticle.articleDate}' type='date' pattern='yyyy-MM-dd'/></li>
-                            <%--<li class="view"><span>34567</span>已阅读</li>--%>
-                            <%--<li class="like">9999</li>--%>
+                            <%--阅读数量显示--%>
+                            <c:if test="${blogArticle.articleReaded < 999}">
+                                <li class="view"><span>${blogArticle.articleReaded}</span>已阅读</li>
+                            </c:if>
+                            <c:if test="${blogArticle.articleReaded > 999 and blogArticle.articleReaded < 100000}">
+                                <li class="view"><span>999+</span>已阅读</li>
+                            </c:if>
+                            <c:if test="${blogArticle.articleReaded > 100000}">
+                                <li class="view"><span>10W+</span>已阅读</li>
+                            </c:if>
+                            <%--点赞数量显示--%>
+                            <c:if test="${blogArticle.articleLiked < 999}">
+                                <li class="like">${blogArticle.articleLiked}</li>
+                            </c:if>
+                            <c:if test="${blogArticle.articleLiked > 999 and blogArticle.articleLiked < 100000}">
+                                <li class="like">999+</li>
+                            </c:if>
+                            <c:if test="${blogArticle.articleLiked >100000}">
+                                <li class="like">10W+</li>
+                            </c:if>
+
                             <a style="float: right;color:#2ab39a;margin-right: 5%" onclick="jumpToUpdate('${blogArticle.articleId}')" >修改</a>
                             <a style="float: right;color:#ac2925;margin-right: -10%;" onclick="articleDelete('${blogArticle.articleId}')">删除</a>
                         </ul>

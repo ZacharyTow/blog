@@ -27,8 +27,8 @@ public interface ArticleManageDao {
     @Select("select max(article_id) from BlogArticle")
     int findPresentArticleId();
 
-    @Insert("insert into BlogArticle(article_id,article_title,article_content,article_author,article_belong_branch,article_date,article_manager) " +
-            "values(#{articleId},#{articleTitle},#{articleContent},#{articleAuthor},#{articleBelongBranch},NOW(),#{articleManager})")
+    @Insert("insert into BlogArticle(article_id,article_title,article_content,article_author,article_belong_branch,article_date,article_readed,article_liked,article_manager) " +
+            "values(#{articleId},#{articleTitle},#{articleContent},#{articleAuthor},#{articleBelongBranch},NOW(),#{articleReaded},#{articleLiked},#{articleManager})")
     int insertArticleInfo(BlogArticle blogArticle);
 
     @Update("update BlogArticle set article_title = #{articleTitle},article_content = #{articleContent},article_belong_branch = #{articleBelongBranch}" +

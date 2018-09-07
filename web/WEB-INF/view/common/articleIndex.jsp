@@ -39,19 +39,6 @@
                 <li><a onclick="jumpToMessageBoard('${blogUser.userId}')">留言板</a></li>
                 <li><a onclick="jumpToTraceTimeline('${blogUser.userId}')">时间轴</a></li>
                 <li><a onclick="jumpToAccountManage('${blogUser.userId}')">账号管理</a></li>
-
-                <%--<!--search begin-->--%>
-                <%--<div id="search_bar" class="search_bar">--%>
-                    <%--<form  id="searchform" action="[!--news.url--]e/search/index.php" method="post" name="searchform">--%>
-                        <%--<input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard">--%>
-                        <%--<input type="hidden" name="show" value="title" />--%>
-                        <%--<input type="hidden" name="tempid" value="1" />--%>
-                        <%--<input type="hidden" name="tbname" value="news">--%>
-                        <%--<input type="hidden" name="Submit" value="搜索" />--%>
-                        <%--<span class="search_ico"></span>--%>
-                    <%--</form>--%>
-                <%--</div>--%>
-                <%--<!--search end-->--%>
             </nav>
         </div>
     </header>
@@ -88,8 +75,26 @@
                             <li class="author">${blogArticle.articleAuthor}</li>
                             <li class="lmname" name="articleBelongBranch">${blogArticle.articleBelongBranch}</li>
                             <li class="timer"><fmt:formatDate value='${blogArticle.articleDate}' type='date' pattern='yyyy-MM-dd'/></li>
-                            <%--<li class="view"><span>34567</span>已阅读</li>--%>
-                            <%--<li class="like">9999</li>--%>
+                            <%--阅读数量显示--%>
+                            <c:if test="${blogArticle.articleReaded < 999}">
+                                <li class="view"><span>${blogArticle.articleReaded}</span>已阅读</li>
+                            </c:if>
+                            <c:if test="${blogArticle.articleReaded > 999 and blogArticle.articleReaded < 100000}">
+                            <li class="view"><span>999+</span>已阅读</li>
+                            </c:if>
+                            <c:if test="${blogArticle.articleReaded > 100000}">
+                                <li class="view"><span>10W+</span>已阅读</li>
+                            </c:if>
+                            <%--点赞数量显示--%>
+                            <c:if test="${blogArticle.articleLiked < 999}">
+                                <li class="like">${blogArticle.articleLiked}</li>
+                            </c:if>
+                            <c:if test="${blogArticle.articleLiked > 999 and blogArticle.articleLiked < 100000}">
+                                <li class="like">999+</li>
+                            </c:if>
+                            <c:if test="${blogArticle.articleLiked >100000}">
+                                <li class="like">10W+</li>
+                            </c:if>
                         </ul>
                     </div>
                 </div>
@@ -160,31 +165,6 @@
                     <li> <i><img src="<c:url value="/static/assetsIndex/images/v2.jpg"/>"></i>
                         <p><a href="/">给我模板PSD源文件，我给你设计HTML！</a></p>
                         <span>2018-05-13</span> </li>
-                </ul>
-            </div>
-            <div class="cloud">
-                <h2 class="hometitle">标签云</h2>
-                <ul>
-                    <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
-                </ul>
-            </div>
-            <div class="links">
-                <h2 class="hometitle">友情链接</h2>
-                <ul>
-                    <li><a href="http://www.yangqq.com" target="_blank">杨青博客</a></li>
-                    <li><a href="http://www.yangqq.com" target="_blank">D设计师博客</a></li>
-                    <li><a href="http://www.yangqq.com" target="_blank">优秀个人博客</a></li>
-                </ul>
-            </div>
-            <div class="guanzhu" id="follow-us">
-                <h2 class="hometitle">关注我们 么么哒！</h2>
-                <ul>
-                    <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>杨青博客</a></li>
-                    <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span>杨青博客</a></li>
-                    <li class="qq"><a href="/" target="_blank"><span>QQ号</span>476847113</a></li>
-                    <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span>dancesmiling@qq.com</a></li>
-                    <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span>yangqq_1987</a></li>
-                    <li class="wx"><img src="<c:url value="/static/assetsIndex/images/wx.jpg"/>"></li>
                 </ul>
             </div>
         </div>
