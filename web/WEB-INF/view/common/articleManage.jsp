@@ -56,7 +56,8 @@
                     <h3 class="articletitle"><p target="_blank">${blogArticle.articleTitle}</p></h3>
                     <p class="articletext">${blogArticle.articleContent}</p>
                     <div class="articleinfo">
-                        <ul><li class="author">${blogArticle.articleAuthor}</li>
+                        <ul id="listArticle">
+                            <li class="author">${blogArticle.articleAuthor}</li>
                             <li class="lmname" name="articleBelongBranch">${blogArticle.articleBelongBranch}</li>
                             <li class="timer"><fmt:formatDate value='${blogArticle.articleDate}' type='date' pattern='yyyy-MM-dd'/></li>
                             <%--阅读数量显示--%>
@@ -79,7 +80,6 @@
                             <c:if test="${blogArticle.articleLiked >100000}">
                                 <li class="like">10W+</li>
                             </c:if>
-
                             <a style="float: right;color:#2ab39a;margin-right: 5%" onclick="jumpToUpdate('${blogArticle.articleId}')" >修改</a>
                             <a style="float: right;color:#ac2925;margin-right: -10%;" onclick="articleDelete('${blogArticle.articleId}')">删除</a>
                         </ul>

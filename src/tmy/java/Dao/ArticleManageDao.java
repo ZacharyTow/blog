@@ -1,9 +1,6 @@
 package tmy.java.Dao;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import tmy.java.Bean.BlogArticle;
 
 import java.util.List;
@@ -20,6 +17,12 @@ public interface ArticleManageDao {
 
     @Select("select * from BlogArticle where article_manager = #{loginName} order by article_liked desc limit 3")
     List<BlogArticle> findArticleRecommendByuUser(String loginName);
+
+    @Select("select distinct article_belong_branch from BlogArticle where article_manager = #{loginName}")
+    List<String> findAllBranchNameByUser(String loginName);
+
+    @Select("select count(1) from BlogArticle where article_manager = #{loginName} and article_belong_branch = #{branchName}")
+    int findCountByName(@Param("loginName") String loginName,@Param("branchName") String branchName);
 
     @Select("select * from BlogArticle where article_manager = #{loginName} order by article_readed desc limit 1")
     BlogArticle findArticleReadedMax(String loginName);
@@ -46,6 +49,7 @@ public interface ArticleManageDao {
     @Update("update BlogArticle set article_title = #{articleTitle},article_content = #{articleContent},article_belong_branch = #{articleBelongBranch}" +
             " where article_id = #{articleId}")
     int updateArticleById(BlogArticle blogArticle);
+
 
 
 }

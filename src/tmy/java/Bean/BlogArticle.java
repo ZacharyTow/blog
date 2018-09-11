@@ -4,7 +4,7 @@ import java.util.Date;
 /**
  * Created by Zt on 2018.8.7
  * Bean数据传输层
- * 映射数据库blogvalue
+ * 映射数据库blogArticle
  */
 public class BlogArticle {
     private int articleId;

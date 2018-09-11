@@ -22,7 +22,7 @@ public class CookieManageServiceImpl implements CookieManageService {
     @Override
     public void setCookieByName(HttpServletResponse response,BlogUser blogUser) {
         Cookie cookie = new Cookie(blogUser.getLoginName(),blogUser.getLoginPassword());
-        cookie.setMaxAge(10);// 设置为30min
+        cookie.setMaxAge(30*60);// 设置为30min
         cookie.setPath("/");
         response.addCookie(cookie);
     }

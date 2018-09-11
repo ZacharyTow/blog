@@ -1,5 +1,5 @@
 <!--
-var pager = new ETNGpager('div','div2',10,10);//24为每页显示条数。10为导航显示菜单数
+var pager = new ETNGpager('message','message2',5,10);//24为每页显示条数。10为导航显示菜单数
 var curP = 1;
 page()
 function page(i){

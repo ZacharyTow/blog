@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import tmy.java.Bean.BlogArticle;
-import tmy.java.Bean.BlogMessage;
-import tmy.java.Bean.BlogTimeline;
-import tmy.java.Bean.BlogUser;
+import tmy.java.Bean.*;
 import tmy.java.Service.*;
 
 import java.util.List;
@@ -43,15 +40,17 @@ public class CommonManageController {
         List<BlogArticle> blogArticles = articleManageService.getAllArticle(blogUser.getLoginName());
         //获取该用户推荐博文
         List<BlogArticle> blogArticlesRecommends = articleManageService.getAllArticleRecommend(blogUser.getLoginName());
+        //分支展示
+        List<BlogBranch> blogBranches = articleManageService.getAllBranch(blogUser.getLoginName());
         //点击量排行
         BlogArticle blogArticleReadedMax = articleManageService.getArticleReadesMax(blogUser.getLoginName());
         List<BlogArticle> blogArticleReadeds = articleManageService.getAllArticleReaded(blogUser.getLoginName());
         //特别推荐博文系列
         List<BlogArticle> blogArticleSpecials  = articleManageService.getAllArticleSpecial();
-
         modelAndView.addObject("blogUser", blogUser);
         modelAndView.addObject("blogArticles", blogArticles);
         modelAndView.addObject("blogArticlesRecommends", blogArticlesRecommends);
+        modelAndView.addObject("blogBranches", blogBranches);
         modelAndView.addObject("blogArticleReadedMax", blogArticleReadedMax);
         modelAndView.addObject("blogArticleReadeds", blogArticleReadeds);
         modelAndView.addObject("blogArticleSpecials", blogArticleSpecials);

@@ -1,7 +1,11 @@
 package tmy.java.Bean;
 
 import java.util.Date;
-
+/**
+ * Created by Zt on 2018.8.26
+ * Bean数据传输层
+ * 映射数据库blogTimeline
+ */
 public class BlogTimeline {
     private int timelineId;
     private String timelineTitle;

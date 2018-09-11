@@ -13,7 +13,7 @@ this.showType = true;/*???????*/
 this.result   = {pagedata:[],pagebar:'',limit:[0,0],report:''};
 this.parse();/*??????*/
 }
-ETNGpager.prototype.page = function (){
+ETNGpager.prototype.page = function(){
 this.cntP = Math.ceil(this.cntR/this.cntPP);/*?????*/
 this.cntS = Math.ceil(this.cntP/this.cntPS);/*?????*/
 this.curS = Math.ceil(this.curP/this.cntPS);/*?????*/

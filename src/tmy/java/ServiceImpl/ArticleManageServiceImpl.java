@@ -7,10 +7,12 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tmy.java.Bean.BlogArticle;
+import tmy.java.Bean.BlogBranch;
 import tmy.java.Dao.ArticleManageDao;
 import tmy.java.Service.ArticleManageService;
 
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -39,6 +41,19 @@ public class ArticleManageServiceImpl implements ArticleManageService {
     public List<BlogArticle> getAllArticleRecommend(String loginName){
         List<BlogArticle> blogArticleRecommend = articleManageDao.findArticleRecommendByuUser(loginName);
         return blogArticleRecommend;
+    }
+
+    @Override
+    public List<BlogBranch> getAllBranch(String loginName) {
+        List<BlogBranch> blogBranches = new LinkedList<>();
+        List<String> branchNames = articleManageDao.findAllBranchNameByUser(loginName);
+        for(String branchName:branchNames){
+            BlogBranch blogBranch = new BlogBranch();
+            blogBranch.setName(branchName);
+            blogBranch.setCount(articleManageDao.findCountByName(loginName,branchName));
+            blogBranches.add(blogBranch);
+        }
+        return blogBranches;
     }
 
     @Override

@@ -83,17 +83,17 @@
 
 /*//////////////sidebar//////////////////*/
 /* zhuanti */
-.zhuanti { overflow: hidden }
-.zhuanti ul { width: 100%; overflow: hidden; display: block; clear: both; }
-.zhuanti li { margin: 0 0 20px 0; overflow: hidden; position: relative; }
-.zhuanti li i { background: #000; display: block }
-.zhuanti img { width: 100%; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; opacity: 0.5 }
-.zhuanti p { position: absolute; top: 30%; left: 0; right: 0; color: #FFF; text-align: center; font-size: 15px; overflow: hidden; margin-top: 5px; padding: 0 40px; }
-.zhuanti p a { color: #fff; }
-.zhuanti span { width: 80px; margin: 10px auto; background: transparent; font-size: 12px; border: 1px solid #FFF; border-radius: 40px; padding: 4px 0; color: #FFF; display: block; clear: both; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -ms-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; }
-.zhuanti li:hover img { opacity: 0.6 }
-.zhuanti li:hover span { background: #FFF; }
-.zhuanti li:hover span a { color: #333 }
+.tuijian { overflow: hidden }
+.tuijian ul { width: 100%; overflow: hidden; display: block; clear: both; }
+.tuijian li { margin: 0 0 20px 0; overflow: hidden; position: relative; }
+.tuijian li i { background: #000; display: block }
+.tuijian img { width: 100%; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; opacity: 0.5 }
+.tuijian p { position: absolute; top: 30%; left: 0; right: 0; color: #FFF; text-align: center; font-size: 15px; overflow: hidden; margin-top: 5px; padding: 0 40px; }
+.tuijian p a { color: #fff; }
+.tuijian span { width: 80px; margin: 10px auto; background: transparent; font-size: 12px; border: 1px solid #FFF; border-radius: 40px; padding: 4px 0; color: #FFF; display: block; clear: both; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -ms-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; }
+.tuijian li:hover img { opacity: 0.6 }
+.tuijian li:hover span { background: #FFF; }
+.tuijian li:hover span a { color: #333 }
 /*tjpic */
 .tjpic { width: 100%; height: 170px; background: #000; margin-bottom: 20px; overflow: hidden; display: block; clear: both; position: relative; }
 .tjpic img { width: 100%; min-height: 170px; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; }

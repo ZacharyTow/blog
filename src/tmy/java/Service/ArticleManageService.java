@@ -1,6 +1,8 @@
 package tmy.java.Service;
 
 import tmy.java.Bean.BlogArticle;
+import tmy.java.Bean.BlogBranch;
+
 import java.util.List;
 
 /**
@@ -14,6 +16,8 @@ public interface ArticleManageService {
     List<BlogArticle> getAllArticle(String loginName);
     //获取推荐博文
     List<BlogArticle> getAllArticleRecommend(String loginName);
+    //获取所有分支
+    List<BlogBranch> getAllBranch(String loginName);
     //获取点击量排行博文
     BlogArticle getArticleReadesMax(String loginName);
     List<BlogArticle> getAllArticleReaded(String loginName);
@@ -27,4 +31,6 @@ public interface ArticleManageService {
     int renewalArticleById(BlogArticle blogArticle);
     //删除博文
     int removeArticleById(int articleId);
+
+
 }

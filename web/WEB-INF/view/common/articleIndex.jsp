@@ -1,4 +1,5 @@
-<%--
+<%@ page import="tmy.java.Bean.BlogBranch" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: tao.zhang
   Date: 2018/8/17
@@ -50,7 +51,6 @@
 
             <div class="picsbox">
                 <div class="banner">
-                <%--<c:forEach items="${blogArticlesRecommends}" var="blogArticlesRecommend">--%>
                     <div id="banner" class="fader">
                     <% int index = 1;%>
                     <c:forEach items="${blogArticlesRecommends}" var="blogArticlesRecommend">
@@ -117,26 +117,43 @@
                 <p class="abposition">${blogUser.userWork}</p>
                 <p class="abtext">${blogUser.userIntroduce}</p>
             </div>
-
-            <div class="tuijian">
+            <%--博文分支--%>
+            <div class="branch">
+                <h2 class="hometitle">博文分支</h2>
+                <ul class="sidenews">
+                    <%  int count = 0;
+                        List<BlogBranch> blogBranches = (List<BlogBranch>) request.getAttribute("blogBranches");
+                        for(int i = 0;i < blogBranches.size();i++)
+                            count = count + blogBranches.get(i).getCount();
+                    %>
+                    <a onclick="refreshIndex(null)">全部(<%=count%>)</a>
+                    <c:forEach items="${blogBranches}" var="blogBranch">
+                        <a onclick="refreshIndex('${blogBranch.name}')">${blogBranch.name}(${blogBranch.count})</a>
+                        <br/>
+                    </c:forEach>
+                </ul>
+            </div>
+            <%--点击排行--%>
+            <div class="paihang">
                 <h2 class="hometitle">点击排行</h2>
                 <ul class="tjpic">
                     <i><a onclick="jumpToView('${blogArticleReadedMax.articleId}')"><img src="<c:url value="/static/assetsIndex/images/b06.jpg"/>"></a></i>
                     <p>${blogArticleReadedMax.articleTitle}</p>
                 </ul>
-
                 <ul class="sidenews">
                 <% index = 1;%>
                 <c:forEach items="${blogArticleReadeds}" var="blogArticleReaded">
                     <%String imageUrl="/static/assetsIndex/images/v"+ (index++) +".jpg"; %>
                     <li> <i><img src="<c:url value="<%=imageUrl%>"/>"></i>
                         <p><a onclick="jumpToView('${blogArticleReaded.articleId}')">${blogArticleReaded.articleTitle}</a></p>
-                        <span><fmt:formatDate value='${blogArticleReaded.articleDate}' type='date' pattern='yyyy-MM-dd'/></span> </li>
+                        <span><fmt:formatDate value='${blogArticleReaded.articleDate}' type='date' pattern='yyyy-MM-dd'/></span>
+                    </li>
                 </c:forEach>
                 </ul>
             </div>
-            <%--特别推荐等插件--%>
-            <div class="zhuanti">
+
+            <%--特别推荐--%>
+            <div class="tuijian">
                 <h2 class="hometitle">特别推荐</h2>
                 <% index = 3;%>
                 <c:forEach items="${blogArticleSpecials}" var="blogArticleSpecial">
