@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import tmy.java.Bean.*;
 import tmy.java.Service.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -33,11 +34,16 @@ public class CommonManageController {
 
     //博客首页
     @RequestMapping("/articleIndex")
-    public ModelAndView Index(@ModelAttribute("userId") int userId){
+    public ModelAndView Index(@ModelAttribute("userId") int userId,@ModelAttribute("branchName") String branchName){
         ModelAndView modelAndView = new ModelAndView("common/articleIndex");
         BlogUser blogUser = articleUserService.getUserById(userId);
-        //获取该用户所有博文
-        List<BlogArticle> blogArticles = articleManageService.getAllArticle(blogUser.getLoginName());
+        //获取该用户指定分支所有博文
+        List<BlogArticle> blogArticles = new LinkedList<>();
+        if(branchName.equals("All"))
+            blogArticles = articleManageService.getAllArticle(blogUser.getLoginName());
+        else
+            blogArticles = articleManageService.getAllArticleByBranch(blogUser.getLoginName(),branchName);
+
         //获取该用户推荐博文
         List<BlogArticle> blogArticlesRecommends = articleManageService.getAllArticleRecommend(blogUser.getLoginName());
         //分支展示

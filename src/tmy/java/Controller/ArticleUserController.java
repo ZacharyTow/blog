@@ -53,6 +53,7 @@ public class ArticleUserController {
         String view = "";
         if (blogUser != null) {//登陆名与登陆密码无误
             attr.addFlashAttribute("userId",blogUser.getUserId());
+            attr.addFlashAttribute("branchName","All");
             //更新cookie
             cookieManageService.setCookieByName(response,blogUser);
             view = "redirect:/articleIndex";

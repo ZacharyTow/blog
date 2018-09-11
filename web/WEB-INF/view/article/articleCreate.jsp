@@ -35,7 +35,7 @@
         <div class="menu">
             <nav class="nav" id="topnav">
                 <h1 class="logo" style="color: white">${blogUser.userName}的博客</h1>
-                <li><a onclick="jumpToIndex('${blogUser.userId}')">首页推荐</a></li>
+                <li><a onclick="jumpToIndex('${blogUser.userId}','All')">首页推荐</a></li>
                 <li><a onclick="jumpToArticleManage('${blogUser.userId}')">博文管理</a> </li>
                 <li><a onclick="jumpToMessageBoard('${blogUser.userId}')">留言板</a></li>
                 <li><a onclick="jumpToTraceTimeline('${blogUser.userId}')">时间轴</a></li>

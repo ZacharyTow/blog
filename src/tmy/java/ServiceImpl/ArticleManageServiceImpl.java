@@ -32,7 +32,13 @@ public class ArticleManageServiceImpl implements ArticleManageService {
     @Override
     @Transactional(readOnly = true)
     public List<BlogArticle> getAllArticle(String loginName) {
-        List<BlogArticle> blogArticles = articleManageDao.findArticleByuUser(loginName);
+        List<BlogArticle> blogArticles = articleManageDao.findArticleByUser(loginName);
+        return blogArticles;
+    }
+
+    @Override
+    public List<BlogArticle> getAllArticleByBranch(String loginName,String branchName) {
+        List<BlogArticle> blogArticles = articleManageDao.findArticleByBranch(loginName,branchName);
         return blogArticles;
     }
 

@@ -35,7 +35,7 @@
         <div class="menu">
             <nav class="nav" id="topnav">
                 <h1 class="logo" style="color: white">${blogUser.userName}的博客</h1>
-                <li><a onclick="jumpToIndex('${blogUser.userId}')">首页推荐</a></li>
+                <li><a onclick="jumpToIndex('${blogUser.userId}','All')">首页推荐</a></li>
                 <li><a onclick="jumpToArticleManage('${blogUser.userId}')">博文管理</a> </li>
                 <li><a onclick="jumpToMessageBoard('${blogUser.userId}')">留言板</a></li>
                 <li><a onclick="jumpToTraceTimeline('${blogUser.userId}')">时间轴</a></li>
@@ -126,9 +126,10 @@
                         for(int i = 0;i < blogBranches.size();i++)
                             count = count + blogBranches.get(i).getCount();
                     %>
-                    <a onclick="refreshIndex(null)">全部(<%=count%>)</a>
+                    <a onclick="jumpToIndex('${blogUser.userId}','All')">全部(<%=count%>)</a>
+                    <br/>
                     <c:forEach items="${blogBranches}" var="blogBranch">
-                        <a onclick="refreshIndex('${blogBranch.name}')">${blogBranch.name}(${blogBranch.count})</a>
+                        <a onclick="jumpToIndex('${blogUser.userId}','${blogBranch.name}')">${blogBranch.name}(${blogBranch.count})</a>
                         <br/>
                     </c:forEach>
                 </ul>

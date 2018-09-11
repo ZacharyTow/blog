@@ -13,7 +13,10 @@ import java.util.List;
 
 public interface ArticleManageDao {
     @Select("select * from BlogArticle where article_manager = #{loginName} order by article_id desc")
-    List<BlogArticle> findArticleByuUser(String loginName) ;
+    List<BlogArticle> findArticleByUser(String loginName) ;
+
+    @Select("select * from BlogArticle where article_manager = #{loginName} and article_belong_branch = #{branchName} order by article_id desc")
+    List<BlogArticle> findArticleByBranch(@Param("loginName") String loginName,@Param("branchName") String branchName);
 
     @Select("select * from BlogArticle where article_manager = #{loginName} order by article_liked desc limit 3")
     List<BlogArticle> findArticleRecommendByuUser(String loginName);
@@ -49,7 +52,5 @@ public interface ArticleManageDao {
     @Update("update BlogArticle set article_title = #{articleTitle},article_content = #{articleContent},article_belong_branch = #{articleBelongBranch}" +
             " where article_id = #{articleId}")
     int updateArticleById(BlogArticle blogArticle);
-
-
 
 }

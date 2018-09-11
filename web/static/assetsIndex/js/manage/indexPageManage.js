@@ -17,7 +17,7 @@ function jumpToView(articleId) {
     form.remove();
 }
 //回到首页
-function jumpToIndex(userId){
+function jumpToIndex(userId,branchName){
     var form = $("<form>");
     form.attr("style","display:none");
     form.attr("target","");
@@ -28,8 +28,13 @@ function jumpToIndex(userId){
     input.attr("type","hidden");
     input.attr("name","userId");
     input.attr("value",userId);
+    var input1 = $("<input>");
+    input.attr("type","hidden");
+    input.attr("name","branchName");
+    input.attr("value",branchName);
     $("body").append(form);
     form.append(input);
+    form.append(input1);
     form.submit();
     form.remove();
 }

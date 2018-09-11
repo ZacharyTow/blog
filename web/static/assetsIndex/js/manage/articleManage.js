@@ -134,7 +134,4 @@ function hideDiv(div_id) {
     $("#mask").remove();
     $("#" + div_id).animate({left: 0, top: 100, opacity: "hide" }, "slow");
 }
-//分支选择
-function refreshIndex(branchName){
 
-}
