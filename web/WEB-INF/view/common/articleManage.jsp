@@ -54,7 +54,7 @@
             <c:forEach items="${blogArticles}" var="blogArticle">
                 <div class="articles" data-scroll-reveal="enter bottom over 1s" >
                     <h3 class="articletitle"><p target="_blank">${blogArticle.articleTitle}</p></h3>
-                    <p class="articletext">${blogArticle.articleContent}</p>
+                    <pre class="articletext"><c:out value="${blogArticle.articleContent}" /></pre>
                     <div class="articleinfo">
                         <ul id="listArticle">
                             <li class="author">${blogArticle.articleAuthor}</li>

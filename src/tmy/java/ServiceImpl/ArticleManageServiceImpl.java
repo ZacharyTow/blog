@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tmy.java.Bean.BlogArticle;
-import tmy.java.Bean.BlogBranch;
+import tmy.resource.BlogBranch;
 import tmy.java.Dao.ArticleManageDao;
 import tmy.java.Service.ArticleManageService;
 

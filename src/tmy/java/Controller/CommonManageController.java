@@ -3,12 +3,18 @@ package tmy.java.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import tmy.java.Bean.*;
-import tmy.java.Service.*;
+import tmy.java.Bean.BlogArticle;
+import tmy.java.Bean.BlogMessage;
+import tmy.java.Bean.BlogTimeline;
+import tmy.java.Bean.BlogUser;
+import tmy.java.Service.ArticleManageService;
+import tmy.java.Service.ArticleUserService;
+import tmy.java.Service.MessageManageService;
+import tmy.java.Service.TimelineManageService;
+import tmy.resource.BlogBranch;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -31,12 +37,11 @@ public class CommonManageController {
     @Qualifier("messageManageService")
     private MessageManageService messageManageService;
 
-
     //博客首页
     @RequestMapping("/articleIndex")
-    public ModelAndView Index(@ModelAttribute("userId") int userId,@ModelAttribute("branchName") String branchName){
+    public ModelAndView articleIndex(@RequestParam("userId") String userId,@RequestParam("branchName") String branchName){
         ModelAndView modelAndView = new ModelAndView("common/articleIndex");
-        BlogUser blogUser = articleUserService.getUserById(userId);
+        BlogUser blogUser = articleUserService.getUserById(Integer.parseInt(userId));
         //获取该用户指定分支所有博文
         List<BlogArticle> blogArticles = new LinkedList<>();
         if(branchName.equals("All"))
@@ -56,6 +61,7 @@ public class CommonManageController {
         modelAndView.addObject("blogUser", blogUser);
         modelAndView.addObject("blogArticles", blogArticles);
         modelAndView.addObject("blogArticlesRecommends", blogArticlesRecommends);
+        modelAndView.addObject("branchName",branchName);
         modelAndView.addObject("blogBranches", blogBranches);
         modelAndView.addObject("blogArticleReadedMax", blogArticleReadedMax);
         modelAndView.addObject("blogArticleReadeds", blogArticleReadeds);

@@ -38,7 +38,7 @@ public class ArticleManageController {
 
     //博文详情
     @RequestMapping("/articleViews")
-    public ModelAndView articleViews(@RequestParam  int articleId){
+    public ModelAndView articleViews(@RequestParam int articleId){
         ModelAndView modelAndView = new ModelAndView("article/articleViews");
         BlogArticle blogArticle = articleManageService.getArticleById(articleId);
         BlogUser blogUser = articleUserService.getUserByManager(blogArticle.getArticleManager());

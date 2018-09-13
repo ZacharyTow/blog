@@ -18,7 +18,7 @@ function articleCreateConfirm(userId,manager,author){
     }
 
     var jasonObj = {"articleTitle":articleTitle,"articleContent":articleContent,
-            "articleBelongBranch":articleBelongBranch, "articleAuthor":articleAuthor,"articleManager":articleManager};
+        "articleBelongBranch":articleBelongBranch, "articleAuthor":articleAuthor,"articleManager":articleManager};
     $.ajax( {
         type : "post",
         url : "articleCreateConfirm",

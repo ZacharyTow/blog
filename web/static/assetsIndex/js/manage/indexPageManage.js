@@ -29,9 +29,9 @@ function jumpToIndex(userId,branchName){
     input.attr("name","userId");
     input.attr("value",userId);
     var input1 = $("<input>");
-    input.attr("type","hidden");
-    input.attr("name","branchName");
-    input.attr("value",branchName);
+    input1.attr("type","hidden");
+    input1.attr("name","branchName");
+    input1.attr("value",branchName);
     $("body").append(form);
     form.append(input);
     form.append(input1);

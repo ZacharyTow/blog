@@ -6,18 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import tmy.java.Bean.BlogArticle;
 import tmy.java.Bean.BlogUser;
+import tmy.java.Service.ArticleManageService;
 import tmy.java.Service.ArticleUserService;
 import tmy.java.Service.CookieManageService;
 import tmy.java.Service.TimelineManageService;
+import tmy.resource.BlogBranch;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * Created by Zt on 2018.8.7
@@ -39,6 +40,10 @@ public class ArticleUserController {
     @Qualifier("cookieManageService")
     private CookieManageService cookieManageService;
 
+    @Autowired
+    @Qualifier("articleManageService")
+    private ArticleManageService articleManageService;
+
     //主页设置
     @RequestMapping(value = {"/","/home","/home/index"})
     public ModelAndView loginIndex() {
@@ -53,10 +58,9 @@ public class ArticleUserController {
         String view = "";
         if (blogUser != null) {//登陆名与登陆密码无误
             attr.addFlashAttribute("userId",blogUser.getUserId());
-            attr.addFlashAttribute("branchName","All");
             //更新cookie
             cookieManageService.setCookieByName(response,blogUser);
-            view = "redirect:/articleIndex";
+            view = "redirect:/article";
         } else {
             model.addAttribute("message", "登录名或者密码错误，请重新输入");
             view = "login/loginIndex";
@@ -65,6 +69,32 @@ public class ArticleUserController {
         return view;
     }
 
+    //博客首页
+    @RequestMapping("/article")
+    public ModelAndView article(@ModelAttribute("userId") int userId){
+        ModelAndView modelAndView = new ModelAndView("common/articleIndex");
+        BlogUser blogUser = articleUserService.getUserById(userId);
+        //获取该用户指定分支所有博文
+        List<BlogArticle> blogArticles = articleManageService.getAllArticle(blogUser.getLoginName());
+        //获取该用户推荐博文
+        List<BlogArticle> blogArticlesRecommends = articleManageService.getAllArticleRecommend(blogUser.getLoginName());
+        //分支展示
+        List<BlogBranch> blogBranches = articleManageService.getAllBranch(blogUser.getLoginName());
+        //点击量排行
+        BlogArticle blogArticleReadedMax = articleManageService.getArticleReadesMax(blogUser.getLoginName());
+        List<BlogArticle> blogArticleReadeds = articleManageService.getAllArticleReaded(blogUser.getLoginName());
+        //特别推荐博文系列
+        List<BlogArticle> blogArticleSpecials  = articleManageService.getAllArticleSpecial();
+        modelAndView.addObject("blogUser", blogUser);
+        modelAndView.addObject("blogArticles", blogArticles);
+        modelAndView.addObject("blogArticlesRecommends", blogArticlesRecommends);
+        modelAndView.addObject("branchName","All");
+        modelAndView.addObject("blogBranches", blogBranches);
+        modelAndView.addObject("blogArticleReadedMax", blogArticleReadedMax);
+        modelAndView.addObject("blogArticleReadeds", blogArticleReadeds);
+        modelAndView.addObject("blogArticleSpecials", blogArticleSpecials);
+        return modelAndView;
+    }
     //账户更新
     @RequestMapping(value = "/accountUpdate",method = RequestMethod.POST)
     @ResponseBody

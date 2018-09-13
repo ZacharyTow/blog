@@ -1,4 +1,4 @@
-<%@ page import="tmy.java.Bean.BlogBranch" %>
+<%@ page import="tmy.resource.BlogBranch" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: tao.zhang
@@ -76,7 +76,7 @@
             <c:forEach items="${blogArticles}" var="blogArticle">
                 <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
                     <h3 class="blogtitle"><a onclick="jumpToView('${blogArticle.articleId}')" target="_blank">${blogArticle.articleTitle}</a></h3>
-                    <p class="blogtext">${blogArticle.articleContent}</p>
+                    <pre class="blogtext"><c:out value="${blogArticle.articleContent}" /></pre>
                     <div class="bloginfo">
                         <ul>
                             <li class="author">${blogArticle.articleAuthor}</li>
@@ -126,10 +126,20 @@
                         for(int i = 0;i < blogBranches.size();i++)
                             count = count + blogBranches.get(i).getCount();
                     %>
-                    <a onclick="jumpToIndex('${blogUser.userId}','All')">全部(<%=count%>)</a>
+                    <c:if test="${branchName eq 'All'}">
+                        <a href="javascript:void(0)" style="color: #00A7EB" disabled="disabled">全部(<%=count%>)</a>
+                    </c:if>
+                    <c:if test="${branchName ne 'All'}">
+                        <a onclick="jumpToIndex('${blogUser.userId}','All')">全部(<%=count%>)</a>
+                    </c:if>
                     <br/>
                     <c:forEach items="${blogBranches}" var="blogBranch">
-                        <a onclick="jumpToIndex('${blogUser.userId}','${blogBranch.name}')">${blogBranch.name}(${blogBranch.count})</a>
+                        <c:if test="${branchName eq blogBranch.name}">
+                            <a href="javascript:void(0)" style="color: #00A7EB" disabled="disabled">${blogBranch.name}(${blogBranch.count} )</a>
+                        </c:if>
+                        <c:if test="${branchName ne blogBranch.name}">
+                            <a onclick="jumpToIndex('${blogUser.userId}','${blogBranch.name}')">${blogBranch.name}(${blogBranch.count})</a>
+                        </c:if>
                         <br/>
                     </c:forEach>
                 </ul>

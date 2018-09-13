@@ -25,7 +25,6 @@
     <!--[if lt IE 9]>
     <script src="<c:url value="/static/assetsIndex/js/modernizr.js"/>"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -48,7 +47,7 @@
             <h1 class="t_nav"><span>${blogArticle.articleTitle}</span></h1>
             <div class="news_infos">
                 <ul>
-                    <p>${blogArticle.articleContent}</p>
+                    <pre ><c:out value="${blogArticle.articleContent}" /></pre>
                     <br>
                     <p>创建于<fmt:formatDate value='${blogArticle.articleDate}' type='date' pattern='yyyy-MM-dd'/></p>
                 </ul>
