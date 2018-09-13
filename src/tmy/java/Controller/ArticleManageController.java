@@ -8,12 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import tmy.java.Bean.BlogArticle;
+import tmy.java.Bean.BlogBranch;
 import tmy.java.Bean.BlogUser;
 import tmy.java.Service.ArticleManageService;
 import tmy.java.Service.ArticleUserService;
 import tmy.java.Service.TimelineManageService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by Zt on 2018.8.7
@@ -52,7 +54,9 @@ public class ArticleManageController {
     public ModelAndView articleCreate(@RequestParam int userId){
         ModelAndView modelAndView = new ModelAndView("article/articleCreate");
         BlogUser blogUser = articleUserService.getUserById(userId);
+        List<BlogBranch> blogBranchs = articleManageService.getAllBranch(blogUser.getLoginName());
         modelAndView.addObject("blogUser", blogUser);
+        modelAndView.addObject("blogBranchList", blogBranchs);
         return modelAndView;
     }
     //添加博客确认
@@ -79,8 +83,10 @@ public class ArticleManageController {
         ModelAndView modelAndView = new ModelAndView("article/articleUpdate");
         BlogArticle blogArticle = articleManageService.getArticleById(articleId);
         BlogUser blogUser = articleUserService.getUserByManager(blogArticle.getArticleManager());
+        List<BlogBranch> blogBranchs = articleManageService.getAllBranch(blogUser.getLoginName());
         modelAndView.addObject("blogUser", blogUser);
         modelAndView.addObject("blogArticle", blogArticle);
+        modelAndView.addObject("blogBranchList", blogBranchs);
         return modelAndView;
     }
 

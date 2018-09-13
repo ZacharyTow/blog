@@ -1,4 +1,4 @@
-package tmy.resource;
+package tmy.java.Bean;
 /**
  * Created by Zt on 2018.9.11
  * 存储分支信息

@@ -3,7 +3,7 @@
 function articleCreateConfirm(userId,manager,author){
     var articleTitle = $("#articleTitle").val();
     var articleContent = $("#articleContent").val();
-    var articleBelongBranch = $("#articleBelongBranch").val();
+    var articleBelongBranch = $("#branch").val();
     var articleAuthor = author;
     var articleManager = manager;
     if(articleTitle == ''){
@@ -52,7 +52,7 @@ function articleUpdateConfirm(userId,articleId,belong){
     var articleId = articleId;
     var articleTitle = $("#articleTitle").val();
     var articleContent = $("#articleContent").val();
-    var articleBelongBranch = $("#articleBelongBranch").val();
+    var articleBelongBranch = $('#branch').val();
     var articleManager = belong;
     var jasonObj = {"articleId":articleId,"articleTitle":articleTitle, "articleContent":articleContent,
         "articleBelongBranch":articleBelongBranch,"articleManager":articleManager};

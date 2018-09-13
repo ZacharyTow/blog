@@ -15,7 +15,7 @@ import tmy.java.Service.ArticleManageService;
 import tmy.java.Service.ArticleUserService;
 import tmy.java.Service.CookieManageService;
 import tmy.java.Service.TimelineManageService;
-import tmy.resource.BlogBranch;
+import tmy.java.Bean.BlogBranch;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;

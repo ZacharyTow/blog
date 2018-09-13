@@ -14,7 +14,7 @@ import tmy.java.Service.ArticleManageService;
 import tmy.java.Service.ArticleUserService;
 import tmy.java.Service.MessageManageService;
 import tmy.java.Service.TimelineManageService;
-import tmy.resource.BlogBranch;
+import tmy.java.Bean.BlogBranch;
 
 import java.util.LinkedList;
 import java.util.List;

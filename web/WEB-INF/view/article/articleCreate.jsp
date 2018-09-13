@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -58,7 +59,7 @@
                         <p>
                             <span class="req">max 100 symbols</span>
                             <label>Article Title <span>(Required Field)</span></label>
-                            <input id="articleTitle" type="text" class="field size1" />
+                            <input id="articleTitle" type="text" class="field size1" style="font-size: 20px;font-weight: bold"/>
                         </p>
                         <p>
                             <span class="req">max 100 symbols</span>
@@ -67,7 +68,11 @@
                         </p>
                         <p>
                             <label>Branch</label>
-                            <input id="articleBelongBranch" type="text" />
+                            <select id="branch"><!--class = input-middle：表示下拉框的css修饰-->
+                                <c:forEach items="${blogBranchList}" var="blogBranch">
+                                    <option value="${blogBranch.name}">${blogBranch.name}</option>
+                                </c:forEach>
+                            </select>
                         </p>
                         </div>
                         <a style="float: right;color:#2ab39a;margin-right: 10%"

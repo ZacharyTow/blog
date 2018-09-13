@@ -1,4 +1,4 @@
-<%@ page import="tmy.resource.BlogBranch" %>
+<%@ page import="tmy.java.Bean.BlogBranch" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: tao.zhang

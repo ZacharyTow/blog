@@ -1,7 +1,7 @@
 package tmy.java.Service;
 
 import tmy.java.Bean.BlogArticle;
-import tmy.resource.BlogBranch;
+import tmy.java.Bean.BlogBranch;
 
 import java.util.List;
 
