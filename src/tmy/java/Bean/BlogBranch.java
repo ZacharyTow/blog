@@ -4,6 +4,7 @@ package tmy.java.Bean;
  * 存储分支信息
  */
 public class BlogBranch {
+    private String belong;
     private String name;
     private int count;
 
@@ -21,5 +22,13 @@ public class BlogBranch {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public String getBelong() {
+        return belong;
+    }
+
+    public void setBelong(String belong) {
+        this.belong = belong;
     }
 }

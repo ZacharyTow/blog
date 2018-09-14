@@ -134,4 +134,31 @@ function hideDiv(div_id) {
     $("#mask").remove();
     $("#" + div_id).animate({left: 0, top: 100, opacity: "hide" }, "slow");
 }
+//显示div模块
+function showDiv(div_id){
+    var odiv = document.getElementById(div_id);
+    odiv.style.display="block";
+}
+//隐藏div模块
+function concealDiv(div_id){
+    var odiv = document.getElementById(div_id);
+    odiv.style.display="none";
+}
+//添加新分支
+function saveNewBranch(div_id) {
+    var branchName = $("#newBranch").val();
+    $.ajax( {
+        type : "post",
+        url : "newBranchCreate",
+        data:{'branchName':branchName},
+        dataType:"text",
+        success : function(msg) {
+            if(msg == "SUCCESS"){
+                alert(msg);
+            }
+            concealDiv(div_id);
+            window.location.reload();
+        }
+    });
+}
 

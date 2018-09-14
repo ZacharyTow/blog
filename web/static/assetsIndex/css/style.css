@@ -6,7 +6,7 @@ body {
 	line-height:27px;
 	color:#555;
 }
-input, textarea, select { font-family: Verdana, sans-serif;"Microsoft YaHei", Arial, Helvetica, sans-seriffont-size:18px; }
+input, textarea { font-family: Verdana, sans-serif;"Microsoft YaHei", Arial, Helvetica, sans-seriffont-size:18px; }
 textarea { overflow:hidden; }
 
 .field { border:solid 1px #d3cfc7; background:#fff; padding:5px; }
@@ -101,6 +101,57 @@ a.ico:hover { color:#333;}
 .form .field { display:block; }
 .form .inline-field .field { display:inline;}
 .form .req { font-size:13px; float:right; white-space:nowrap; color:#999;  }
+.form .selectStyle{
+	width: 28%;
+	height: 40px;
+	line-height: 36px;
+	border: 1px solid #d3cfc7;
+	border-radius:4px;
+	background-color: transparent;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 0;
+	cursor: pointer;
+	display: inline;
+}
+.form .branchLink{
+	outline:none;
+	padding-right: 60%;
+	color: #18afdc;
+	font-size: 15px;
+	display: inline;
+}
+.form .branchDiv{
+	outline:none;
+	float: right;
+	margin-right: -50%;
+}
+.form .branchInput{
+	outline:none;
+	width:50%;
+	height: 40px;
+	border: 1px solid #d3cfc7;
+	border-radius: 4px;
+	font-size: 15px;
+	overflow:hidden;
+	display: inline;
+}
+.form .branchJudgeSave{
+	outline:none;
+	float: right;
+	font-size: 15px;
+	color:#2ab39a;
+	margin-right: 10%;
+}
+.form .branchJudgeReturn{
+	outline:none;
+	float: right;
+	font-size: 15px;
+	color:#ac2925;
+	margin-right: -30%;
+}
+
 .form p{ padding-bottom:15px; }
 .form p input { font-size:15px; }
 

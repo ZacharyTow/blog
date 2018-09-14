@@ -29,6 +29,13 @@
     <!--[if lt IE 9]>
     <script src="<c:url value="/static/assetsIndex/js/modernizr.js"/>"></script>
     <![endif]-->
+    <script type="text/javascript">
+        //显示div模块
+            $(document).ready(function(){
+                $(".branchLink").click(function(e) {$(".branchDiv").toggle();});
+                // $("#div_id").show();
+            });
+    </script>
 </head>
 <body>
     <header>
@@ -66,13 +73,18 @@
                             <label>Content <span>(Required Field)</span></label>
                             <textarea id="articleContent" class="field size1" rows="10" cols="30"></textarea>
                         </p>
-                        <p>
                             <label>Branch</label>
-                            <select id="branch"><!--class = input-middle：表示下拉框的css修饰-->
+                            <select id="branch" class="selectStyle" required="required"><!--class = input-middle：表示下拉框的css修饰-->
                                 <c:forEach items="${blogBranchList}" var="blogBranch">
-                                    <option value="${blogBranch.name}">${blogBranch.name}</option>
+                                    <option value="${blogBranch.name}" style="font-size: 18px">${blogBranch.name}</option>
                                 </c:forEach>
                             </select>
+                            <a class="branchLink" onclick="showDiv('div-branch-create')" >添加分支</a>
+                            <div id="div-branch-create" style="display:none" class="branchDiv">
+                                <input id="newBranch" class="branchInput"/>
+                                <a class="branchJudgeSave" onclick="saveNewBranch('div-branch-create')">保存</a>
+                                <a class="branchJudgeReturn" onclick="concealDiv('div-branch-create')">返回</a>
+                            </div>
                         </p>
                         </div>
                         <a style="float: right;color:#2ab39a;margin-right: 10%"

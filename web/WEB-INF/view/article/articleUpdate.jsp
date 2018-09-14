@@ -29,6 +29,11 @@
     <!--[if lt IE 9]>
     <script src="<c:url value="/static/assetsIndex/js/modernizr.js"/>"></script>
     <![endif]-->
+    <script  type = "text/javascript" >
+        function change(){
+        document.getElementById("sel")[2].selected=true;
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -65,10 +70,10 @@
                         </p>
                         <p>
                             <label>Branch</label>
-                            <select id="branch"><!--class = input-middle：表示下拉框的css修饰-->
+                            <select id="branch" class="selectStyle" required="required"><!--class = input-middle：表示下拉框的css修饰-->
                                 <c:forEach items="${blogBranchList}" var="blogBranch">
-                                    <c:if test="${blogArticle.articleBelongBranch eq blogBranch.name}"
-                                    <option value="${blogBranch.name}">${blogBranch.name}</option>
+                                    <option value="${blogBranch.name}" style="font-size: 18px"
+                                            <c:if test="${blogArticle.articleBelongBranch eq blogBranch.name}">selected="selected"</c:if> >${blogBranch.name}</option>
                                 </c:forEach>
                             </select>
                         </p>

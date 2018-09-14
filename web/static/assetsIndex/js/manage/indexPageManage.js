@@ -16,7 +16,28 @@ function jumpToView(articleId) {
     form.submit();
     form.remove();
 }
-//回到首页
+//回到首页以及按分支查询
+function jumpToIndex(userId,branchName){
+    var form = $("<form>");
+    form.attr("style","display:none");
+    form.attr("target","");
+    form.attr("method","post");
+    //请求地址
+    form.attr("action","articleIndex");
+    var input = $("<input>");
+    input.attr("type","hidden");
+    input.attr("name","userId");
+    input.attr("value",userId);
+    var input1 = $("<input>");
+    input1.attr("type","hidden");
+    input1.attr("name","branchName");
+    input1.attr("value",branchName);
+    $("body").append(form);
+    form.append(input);
+    form.append(input1);
+    form.submit();
+    form.remove();
+}
 function jumpToIndex(userId,branchName){
     var form = $("<form>");
     form.attr("style","display:none");
