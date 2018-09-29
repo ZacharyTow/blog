@@ -51,6 +51,10 @@
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jackson-annotations-2.2.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jackson-core-2.2.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jackson-databind-2.2.3.jar!/" />
+      <root url="file://$PROJECT_DIR$/web/WEB-INF/lib" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-data-redis-2.1.0.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jedis-2.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-pool2-2.6.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
@@ -58,5 +62,6 @@
       <root url="jar://$USER_HOME$/.ideaLibSources/fastjson-1.2.8-sources.jar!/" />
       <root url="jar://$USER_HOME$/.ideaLibSources/spring-aop-4.2.0.RELEASE-sources.jar!/" />
     </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/web/WEB-INF/lib" recursive="false" />
   </library>
 </component>
